@@ -25,7 +25,7 @@ static unsigned long loops_per_msec()
 	unsigned long i;
 	for (i = 0; i < NLOOP_FOR_ESTIMATION; i++)
 		;
-	clock_gettime(CLOCk-monotonic, &after);
+	clock_gettime(CLOCK_MONOTONIC, &after);
 
 	int ret;
 	return NLOOP_FOR_ESTIMATION * NSECS_PER_MSEC / diff_nsec(before, after);
@@ -135,11 +135,11 @@ int main(int argc, char *argv[])
 	
 wait_children:
 	if (ret == EXIT_FAILURE)
-		for (i = 0; i < ncraeted; i++)
+		for (i = 0; i < ncreated; i++)
 			if (kill(pids[i], SIGINT) < 0)
 				warn("kill(%d) failed", pids[i]);
 
-	for ( = 0; i < ncreated; i++)
+	for (i = 0; i < ncreated; i++)
 		if (wait(NULL) < 0)
 			warn("wait() failed.");
 
